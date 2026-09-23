@@ -1,0 +1,6 @@
+-Migrate machine_learning folder contents into ROS2
+-Update joints/links to match current Kora iteration
+-Make vision.py and custom Detectron2 compatible with current version of Detectron2 if no higher-performing library is available
+-Retrain model to include initial input from VR human kinematic data
+-Clean up to make files more human-readable
+-Prepare missing files for upload

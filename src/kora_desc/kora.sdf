@@ -1,0 +1,2111 @@
+<?xml version="1.0"?>
+<sdf version="1.9">
+  
+
+<!-- Built using SDF Generator: https://github.com/Miimiikiu/kora_tools.git -->
+<!-- Editing this SDF file by hand is not recommended. -->
+
+
+  <!--<world name="kora_world">
+    <physics name="1ms" type="ignored">-->
+        <!--<ode>
+            <solver>
+                <type>"quick"</type>
+                <sor>1.3</sor>
+                <iters>50</iters>
+                <use_dynamic_moi_rescaling>false</use_dynamic_moi_rescaling>
+            </solver>
+        </ode>-->
+        <!--<max_step_size>0.001</max_step_size>
+        <real_time_factor>100.0</real_time_factor>
+    </physics>
+
+    <plugin
+        filename="ignition-gazebo-physics-system"
+        name="ignition::gazebo::systems::Physics">
+    </plugin>
+
+    <plugin
+        filename="ignition-gazebo-user-commands-system"
+        name="ignition::gazebo::systems::UserCommands">
+    </plugin>
+
+    <plugin
+        filename="ignition-gazebo-scene-broadcaster-system"
+        name="ignition::gazebo::systems::SceneBroadcaster">
+    </plugin>-->
+
+    <!--<plugin
+      filename="libignition-gazebo-sensors-system.so"
+      name="ignition::gazebo::systems::Sensors">-->
+      <!-- ogre2 not working with just the MESA_GL_VERSION_OVERRIDE=3.3 trick -->
+      <!--<render_engine>ogre</render_engine>
+    </plugin>-->
+    
+
+
+
+    <!--<light type="directional" name="sun">
+        <cast_shadows>true</cast_shadows>
+        <pose>0 0 10 0 0 0</pose>
+        <diffuse>0.8 0.8 0.8 1</diffuse>
+        <specular>0.2 0.2 0.2 1</specular>
+        <attenuation>
+            <range>1000</range>
+            <constant>0.9</constant>
+            <linear>0.01</linear>
+            <quadratic>0.001</quadratic>
+        </attenuation>
+        <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <scene>
+        <sky/>
+    </scene>
+
+    <gui>
+      <fullscreen>true</fullscreen>
+      <camera name='Camera'>
+        <pose>10 -2 -2 0 0 0</pose>
+      </camera>
+    </gui>
+    
+    <model name="ground_plane">
+        <static>true</static>
+        <link name="link">
+            <collision name="collision">
+            <geometry>
+                <plane>
+                  <normal>0 0 1</normal>
+                </plane>
+            </geometry>
+            </collision>
+            <visual name="visual">
+            <geometry>
+                <plane>
+                <normal>0 0 1</normal>
+                <size>100 100</size>
+                </plane>
+            </geometry>
+            <material>
+                <ambient>0.8 0.8 0.8 1</ambient>
+                <diffuse>0.8 0.8 0.8 1</diffuse>
+                <specular>0.8 0.8 0.8 1</specular>
+            </material>
+            </visual>
+        </link>
+    </model>-->
+
+    <model name="kora" canonical_link='torso_lower'>
+      <static>true</static>
+      <plugin filename="libignition-gazebo-joint-state-publisher-system.so" name="ignition::gazebo::systems::JointStatePublisher"/>
+
+
+    
+
+      <link name="torso_lower">
+        <pose relative_to='__model__'>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_torso_lower'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/torso_lower.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_torso_lower'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/torso_lower_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.00433778921</ixx>
+            <ixy>-9.08698218e-06</ixy>
+            <ixz>6.015618019999999e-06</ixz>
+            <iyy>0.00327528256</iyy>
+            <iyz>0.0008259445780000001</iyz>
+            <izz>0.00448404768</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="torso_mid">
+        <pose relative_to='torso_lower'>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_torso_mid'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/torso_mid.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_torso_mid'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/torso_mid_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.00349680885</ixx>
+            <ixy>-7.22360891e-21</ixy>
+            <ixz>-1.64695615e-19</ixz>
+            <iyy>0.00401549693</iyy>
+            <iyz>5.5563248699999994e-06</iyz>
+            <izz>0.00647631994</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="torso_upper">
+        <pose relative_to='torso_mid'>0.0 0.0 0.1 0.0 0.0 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_torso_upper'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/torso_upper.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_torso_upper'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/torso_upper_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.011925590199999999</ixx>
+            <ixy>-1.34254727e-06</ixy>
+            <ixz>3.94209561e-06</ixz>
+            <iyy>0.0120148783</iyy>
+            <iyz>2.94102999e-06</iyz>
+            <izz>0.0116527628</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="backpack">
+        <pose relative_to='torso_upper'>0.0 0.12 0.1 0.0 0.0 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_backpack'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/backpack.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_backpack'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/backpack_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.0222803238</ixx>
+            <ixy>-1.3425329400000001e-06</ixy>
+            <ixz>-8.81825398e-07</ixz>
+            <iyy>0.027701203000000004</iyy>
+            <iyz>0.0009489099969999999</iyz>
+            <izz>0.0105777581</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="neck">
+        <pose relative_to='torso_upper'>0.0 0.0 0.25186 0.0 0.0 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_neck'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/neck.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_neck'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/neck_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>6.1003576999999995e-06</ixx>
+            <ixy>-4.877739510000001e-13</ixy>
+            <ixz>7.82291408e-14</ixz>
+            <iyy>6.10035843e-06</iyy>
+            <iyz>3.85604688e-14</iyz>
+            <izz>1.0733481400000001e-05</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="neck_connection">
+        <pose relative_to='torso_upper'>0.0 0.0 0.22609 0.0 0.0 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_neck_connection'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/neck_connection.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_neck_connection'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/neck_connection_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>5.5356104900000006e-05</ixx>
+            <ixy>1.80622642e-22</ixy>
+            <ixz>-1.22648384e-21</ixz>
+            <iyy>1.26475226e-05</iyy>
+            <iyz>-2.4919761099999997e-22</iyz>
+            <izz>6.1013188900000006e-05</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="head">
+        <pose relative_to='neck'>0.0 0.0 0.02618000000000001 0.0 0.0 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_head'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/head.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_head'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/head_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.00875499152</ixx>
+            <ixy>-1.10031686e-07</ixy>
+            <ixz>1.05895885e-07</ixz>
+            <iyy>0.0100606856</iyy>
+            <iyz>0.000146878504</iyz>
+            <izz>0.0102866286</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="realsense">
+        <pose relative_to='head'>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_realsense'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/realsense.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_realsense'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/realsense_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>2.57383108e-07</ixx>
+            <ixy>2.38709849e-21</ixy>
+            <ixz>-2.03483329e-21</ixz>
+            <iyy>2.70705869e-06</iyy>
+            <iyz>-2.3293406e-19</iyz>
+            <izz>2.67601348e-06</izz>
+          </inertia>
+        </inertial>
+<!-- realsense_sensor -->
+      
+        <sensor type="camera" name="camera_sensor_color">
+          <pose relative_to='realsense'>0.0 0.0 0.0 0.0 0.0 4.7124</pose>
+          
+          
+
+          <!-- Set always_on only sensor, not on plugin -->
+          <always_on>0</always_on>
+
+          <!-- Set update_rate only sensor, not on plugin -->
+          <update_rate>5</update_rate>
+
+          <camera name="camera_color">
+
+          </camera>
+
+          <!-- Use camera, not camera_triggered -->
+          <plugin name="plugin_name" filename="libgazebo_ros_camera.so">
+            <!-- Change namespace, camera name and topics so -
+                 * Images are published to: /custom_ns/custom_camera/custom_image
+                 * Camera info is published to: /custom_ns/custom_camera/custom_info
+            -->
+            <ros>
+              <namespace>camera_color</namespace>
+              <remapping>image_raw:=img</remapping>
+              <remapping>camera_info:=info</remapping>
+            </ros>
+
+            <!-- Set camera name. If empty, defaults to sensor name (i.e. "sensor_name") -->
+            <camera_name>camera_color</camera_name>
+
+            <!-- Set TF frame name. If empty, defaults to link name (i.e. "link_name") -->
+            <frame_name>realsense</frame_name>
+
+            <hack_baseline>0.07</hack_baseline>
+
+            <!-- No need to repeat distortion parameters or to set autoDistortion -->
+          </plugin>
+        </sensor>
+
+        
+        <sensor type="depth" name="depth_sensor">
+          
+
+          <!-- Set always_on only sensor, not on plugin -->
+          <always_on>0</always_on>
+
+          <!-- Set update_rate only sensor, not on plugin -->
+          <update_rate>1</update_rate>
+
+          <camera name="depth_camera">
+            
+            <!--<distortion>
+              <k1>0.1</k1>
+              <k2>0.2</k2>
+              <k3>0.3</k3>
+              <p1>0.4</p1>
+              <p2>0.5</p2>
+              <center>0.5 0.5</center>
+            </distortion>-->
+          </camera>
+
+          <plugin name="plugin_name_depth" filename="libgazebo_ros_camera.so">
+            <!-- Change namespace, camera name and topics so -
+                 * Raw images are published to: /custom_ns/custom_camera/custom_image
+                 * Depth images are published to: /custom_ns/custom_camera/custom_image_depth
+                 * Raw image camera info is published to: /custom_ns/custom_camera/custom_info_raw
+                 * Depth image camera info is published to: /custom_ns/custom_camera/custom_info_depth
+                 * Point cloud is published to: /custom_ns/custom_camera/custom_points
+            -->
+            <ros>
+              <namespace>depth_camera</namespace>
+              <remapping>depth_camera/image_raw:=depth_camera/custom_image</remapping>
+              <remapping>depth_camera/image_depth:=depth_camera/custom_image_depth</remapping>
+              <remapping>depth_camera/camera_info:=depth_camera/custom_info_raw</remapping>
+              <remapping>depth_camera/camera_info_depth:=depth_camera/custom_info_depth</remapping>
+              <remapping>depth_camera/points:=depth_camera/custom_points</remapping>
+            </ros>
+
+            <!-- Set camera name. If empty, defaults to sensor name (i.e. "sensor_name") -->
+            <camera_name>depth_camera</camera_name>
+
+            <!-- Set TF frame name. If empty, defaults to link name (i.e. "link_name") -->
+            <frame_name>realsense</frame_name>
+
+            <hack_baseline>0.07</hack_baseline>
+
+            <!-- No need to repeat distortion parameters or to set autoDistortion -->
+
+             <min_depth>0.001</min_depth>
+          </plugin>
+        </sensor>      </link>
+    
+      <link name="shoulder_bracket_dexter">
+        <pose relative_to='torso_upper'>-0.10976 0.0 0.14829 0.0 0.165143 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_shoulder_bracket_dexter'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/shoulder_bracket_dexter.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_shoulder_bracket_dexter'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/shoulder_bracket_dexter_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.00144157404</ixx>
+            <ixy>-4.4869663199999996e-08</ixy>
+            <ixz>6.311151650000001e-05</ixz>
+            <iyy>0.0007949240900000001</iyy>
+            <iyz>-3.69869358e-08</iyz>
+            <izz>0.00103050401</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="shoulder_link_dexter">
+        <pose relative_to='shoulder_bracket_dexter'>-0.076 0.0 0.0 0.0 -0.165143 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_shoulder_link_dexter'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/shoulder_link_dexter.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_shoulder_link_dexter'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/shoulder_link_dexter_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.00089769986</ixx>
+            <ixy>-5.50831472e-09</ixy>
+            <ixz>5.28057508e-06</ixz>
+            <iyy>0.000936444764</iyy>
+            <iyz>-1.70906237e-08</iyz>
+            <izz>0.00113433115</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="arm_upper_dexter">
+        <pose relative_to='shoulder_link_dexter'>-0.102 0.0 0.0 0.0 0.0 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_arm_upper_dexter'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/arm_upper_dexter.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_arm_upper_dexter'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/arm_upper_dexter_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.000233307947</ixx>
+            <ixy>-8.29006429e-21</ixy>
+            <ixz>8.64003529e-20</ixz>
+            <iyy>0.00027190574799999996</iyy>
+            <iyz>2.06795153e-21</iyz>
+            <izz>0.000250122095</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="forearm_dexter">
+        <pose relative_to='arm_upper_dexter'>-0.155 0.0 0.0 0.0 0.0 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_forearm_dexter'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/forearm_dexter.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_forearm_dexter'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/forearm_dexter_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.000530099429</ixx>
+            <ixy>9.17050572e-06</ixy>
+            <ixz>-7.13339277e-09</ixz>
+            <iyy>0.0009883305099999999</iyy>
+            <iyz>2.2009097e-09</iyz>
+            <izz>0.0009665236070000001</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="wrist_rot_link_dexter">
+        <pose relative_to='forearm_dexter'>-0.1 0.0 0.0 0.0 0.0 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_wrist_rot_link_dexter'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/wrist_rot_link_dexter.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_wrist_rot_link_dexter'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/wrist_rot_link_dexter_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.000111629122</ixx>
+            <ixy>-8.30961813e-21</ixy>
+            <ixz>4.9961709e-22</ixz>
+            <iyy>7.147135539999999e-05</iyy>
+            <iyz>4.91138489e-22</iyz>
+            <izz>7.14714437e-05</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="wrist_ball_dexter">
+        <pose relative_to='wrist_rot_link_dexter'>-0.055 0.0 0.0 0.0 0.0 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_wrist_ball_dexter'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/wrist_ball_dexter.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_wrist_ball_dexter'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/wrist_ball_dexter_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>3.9329131600000004e-05</ixx>
+            <ixy>1.44590198e-21</ixy>
+            <ixz>6.45308082e-12</ixz>
+            <iyy>2.5775806600000004e-05</iyy>
+            <iyz>-4.01938635e-22</iyz>
+            <izz>2.5775695700000002e-05</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="hand_dexter">
+        <pose relative_to='wrist_ball_dexter'>-0.05 0.0 0.0 0.0 0.0 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_hand_dexter'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/hand_dexter.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_hand_dexter'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/hand_dexter_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>7.47972951e-05</ixx>
+            <ixy>4.95234034e-06</ixy>
+            <ixz>-8.68417156e-06</ixz>
+            <iyy>0.000135524538</iyy>
+            <iyz>-2.0051651e-06</iyz>
+            <izz>0.00018104788299999998</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="shoulder_bracket_sinister">
+        <pose relative_to='torso_upper'>0.10976 0.0 0.14829 0.0 -0.165143 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_shoulder_bracket_sinister'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/shoulder_bracket_sinister.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_shoulder_bracket_sinister'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/shoulder_bracket_sinister_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.00144157404</ixx>
+            <ixy>-4.4869663199999996e-08</ixy>
+            <ixz>-6.311151650000001e-05</ixz>
+            <iyy>0.0007949240900000001</iyy>
+            <iyz>3.69869358e-08</iyz>
+            <izz>0.00103050401</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="shoulder_link_sinister">
+        <pose relative_to='shoulder_bracket_sinister'>0.076 0.0 0.0 0.0 0.165143 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_shoulder_link_sinister'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/shoulder_link_sinister.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_shoulder_link_sinister'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/shoulder_link_sinister_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.00089769986</ixx>
+            <ixy>-5.50831472e-09</ixy>
+            <ixz>-5.28057508e-06</ixz>
+            <iyy>0.000936444764</iyy>
+            <iyz>1.70906237e-08</iyz>
+            <izz>0.00113433115</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="arm_upper_sinister">
+        <pose relative_to='shoulder_link_sinister'>0.102 0.0 0.0 0.0 0.0 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_arm_upper_sinister'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/arm_upper_sinister.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_arm_upper_sinister'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/arm_upper_sinister_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.000233307947</ixx>
+            <ixy>9.61355327e-21</ixy>
+            <ixz>6.691495609999999e-21</ixz>
+            <iyy>0.00027190574799999996</iyy>
+            <iyz>-2.23338765e-21</iyz>
+            <izz>0.000250122095</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="forearm_sinister">
+        <pose relative_to='arm_upper_sinister'>0.155 0.0 0.0 0.0 0.0 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_forearm_sinister'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/forearm_sinister.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_forearm_sinister'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/forearm_sinister_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.000530099429</ixx>
+            <ixy>9.17050572e-06</ixy>
+            <ixz>7.13339277e-09</ixz>
+            <iyy>0.0009883305099999999</iyy>
+            <iyz>-2.2009097e-09</iyz>
+            <izz>0.0009665236070000001</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="wrist_rot_link_sinister">
+        <pose relative_to='forearm_sinister'>0.1 0.0 0.0 0.0 0.0 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_wrist_rot_link_sinister'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/wrist_rot_link_sinister.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_wrist_rot_link_sinister'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/wrist_rot_link_sinister_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.000111629122</ixx>
+            <ixy>-8.30961813e-21</ixy>
+            <ixz>-4.9961709e-22</ixz>
+            <iyy>7.147135539999999e-05</iyy>
+            <iyz>-4.91138489e-22</iyz>
+            <izz>7.14714437e-05</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="wrist_ball_sinister">
+        <pose relative_to='wrist_rot_link_sinister'>0.055 0.0 0.0 0.0 0.0 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_wrist_ball_sinister'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/wrist_ball_sinister.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_wrist_ball_sinister'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/wrist_ball_sinister_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>3.9329131600000004e-05</ixx>
+            <ixy>1.44590198e-21</ixy>
+            <ixz>-6.45308082e-12</ixz>
+            <iyy>2.5775806600000004e-05</iyy>
+            <iyz>4.01938635e-22</iyz>
+            <izz>2.5775695700000002e-05</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="hand_sinister">
+        <pose relative_to='wrist_ball_sinister'>0.05 0.0 0.0 0.0 0.0 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_hand_sinister'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/hand_sinister.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_hand_sinister'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/hand_sinister_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>7.479572059999999e-05</ixx>
+            <ixy>-4.95856551e-06</ixy>
+            <ixz>8.68406372e-06</ixz>
+            <iyy>0.000135524802</iyy>
+            <iyz>-2.00905246e-06</iyz>
+            <izz>0.00018104611</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="hip_bracket_dexter">
+        <pose relative_to='torso_lower'>-0.074255 0.0 -0.05657 0.0 -0.785398 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_hip_bracket_dexter'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/hip_bracket_dexter.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_hip_bracket_dexter'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/hip_bracket_dexter_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.00057980089</ixx>
+            <ixy>3.03514081e-09</ixy>
+            <ixz>-6.04022308e-05</ixz>
+            <iyy>0.00042406632000000004</iyy>
+            <iyz>-1.91982782e-08</iyz>
+            <izz>0.00044408035399999996</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="hip_motor_link_dexter">
+        <pose relative_to='hip_bracket_dexter'>-0.09714 0.0 -0.08195 0.0 0.785398 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_hip_motor_link_dexter'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/hip_motor_link_dexter.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_hip_motor_link_dexter'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/hip_motor_link_dexter_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.000287783964</ixx>
+            <ixy>-4.0395808699999995e-16</ixy>
+            <ixz>3.2604867599999996e-10</ixz>
+            <iyy>0.00023118299</iyy>
+            <iyz>4.52423297e-10</iyz>
+            <izz>0.00033092146</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="thigh_dexter">
+        <pose relative_to='hip_motor_link_dexter'>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_thigh_dexter'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/thigh_dexter.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_thigh_dexter'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/thigh_dexter_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.00318832262</ixx>
+            <ixy>3.21252453e-05</ixy>
+            <ixz>0.00012394708</ixz>
+            <iyy>0.00276480145</iyy>
+            <iyz>-0.000569440192</iyz>
+            <izz>0.00248045855</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="calf_dexter">
+        <pose relative_to='thigh_dexter'>-0.005 -0.0382 -0.21666 0.0 0.0 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_calf_dexter'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/calf_dexter.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_calf_dexter'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/calf_dexter_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.00558420881</ixx>
+            <ixy>-7.885774e-10</ixy>
+            <ixz>-5.42609033e-10</ixz>
+            <iyy>0.00513737038</iyy>
+            <iyz>0.000873086495</iyz>
+            <izz>0.0030546704499999997</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="ankle_link_dexter">
+        <pose relative_to='calf_dexter'>0.0 0.0547 -0.31021 0.0 0.0 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_ankle_link_dexter'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/ankle_link_dexter.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_ankle_link_dexter'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/ankle_link_dexter_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.000169882972</ixx>
+            <ixy>2.8188764300000002e-21</ixy>
+            <ixz>1.40620704e-21</ixz>
+            <iyy>0.000169882529</iyy>
+            <iyz>-3.87740912e-23</iyz>
+            <izz>0.00023568287299999998</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="foot_dexter">
+        <pose relative_to='ankle_link_dexter'>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_foot_dexter'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/foot_dexter.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_foot_dexter'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/foot_dexter_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.00142180074</ixx>
+            <ixy>-3.57379545e-10</ixy>
+            <ixz>1.49897664e-10</ixz>
+            <iyy>0.000386123636</iyy>
+            <iyz>-1.8796694499999997e-05</iyz>
+            <izz>0.0016409150100000001</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="hip_bracket_sinister">
+        <pose relative_to='torso_lower'>0.074255 0.0 -0.05657 0.0 0.785398 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_hip_bracket_sinister'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/hip_bracket_sinister.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_hip_bracket_sinister'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/hip_bracket_sinister_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.0005886984849999999</ixx>
+            <ixy>2.15943749e-08</ixy>
+            <ixz>5.61868891e-05</ixz>
+            <iyy>0.000403026999</iyy>
+            <iyz>5.0592535799999996e-08</iyz>
+            <izz>0.000492431593</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="hip_motor_link_sinister">
+        <pose relative_to='hip_bracket_sinister'>0.09714 0.0 -0.08195 0.0 -0.785398 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_hip_motor_link_sinister'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/hip_motor_link_sinister.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_hip_motor_link_sinister'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/hip_motor_link_sinister_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.000287783964</ixx>
+            <ixy>-4.03966028e-16</ixy>
+            <ixz>3.2604867599999996e-10</ixz>
+            <iyy>0.00023118299</iyy>
+            <iyz>4.52423297e-10</iyz>
+            <izz>0.00033092146</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="thigh_sinister">
+        <pose relative_to='hip_motor_link_sinister'>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_thigh_sinister'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/thigh_sinister.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_thigh_sinister'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/thigh_sinister_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.0031883234</ixx>
+            <ixy>-3.2095586e-05</ixy>
+            <ixz>-0.000123922686</ixz>
+            <iyy>0.00276480046</iyy>
+            <iyz>-0.0005694405999999999</iyz>
+            <izz>0.00248045802</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="calf_sinister">
+        <pose relative_to='thigh_sinister'>0.005 -0.0382 -0.21666 0.0 0.0 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_calf_sinister'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/calf_sinister.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_calf_sinister'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/calf_sinister_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.005737414979999999</ixx>
+            <ixy>-2.23875926e-09</ixy>
+            <ixz>-2.03377793e-09</ixz>
+            <iyy>0.0052584826</iyy>
+            <iyz>0.000905644896</iyz>
+            <izz>0.0031002929600000002</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="ankle_link_sinister">
+        <pose relative_to='calf_sinister'>0.0 0.0547 -0.31021 0.0 0.0 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_ankle_link_sinister'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/ankle_link_sinister.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_ankle_link_sinister'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/ankle_link_sinister_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.000169882972</ixx>
+            <ixy>-4.25739522e-21</ixy>
+            <ixz>1.0753348000000001e-21</ixz>
+            <iyy>0.000169882529</iyy>
+            <iyz>7.46401256e-23</iyz>
+            <izz>0.00023568287299999998</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+      <link name="foot_sinister">
+        <pose relative_to='ankle_link_sinister'>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+        <!--<pose>[] [] [] [] [] []</pose>-->
+        <self_collide>false</self_collide>
+        <visual name='visual_foot_sinister'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/visuals/OBJ/foot_sinister.obj</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <material name="None"/>
+        <color rgba="${None}"/>
+        <collision name='collision_foot_sinister'>
+          <geometry>
+            <mesh>
+              <uri>/home/sunset/sunset_ws/src/kora/src/kora_desc/collisions/Binary_STL/foot_sinister_collision.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial> <!--inertial properties of the link mass, inertia matix-->
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.00142180074</ixx>
+            <ixy>4.87199272e-10</ixy>
+            <ixz>-1.4993659399999999e-10</ixz>
+            <iyy>0.000386123636</iyy>
+            <iyz>-1.8796694499999997e-05</iyz>
+            <izz>0.0016409150100000001</izz>
+          </inertia>
+        </inertial>
+      </link>
+    
+
+      <joint name="spine_x" type="revolute">
+        <parent>torso_lower</parent>
+        <child>torso_mid</child>
+        <!--<pose relative_to='torso_lower'>[] [] [] [] [] []</pose>-->
+        <pose>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+
+
+      
+        <axis>
+        <!--<xyz expressed_in='__model__'>1 1 1</xyz>-->
+          <xyz>1 0 0</xyz> 
+        
+
+            <!--1 0 0-->
+          <limit>
+            <lower>0.0</lower> 
+            <upper>0.22</upper> 
+            <effort>3.92</effort>
+            <velocity>1.75</velocity>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="spine_z" type="revolute">
+        <parent>torso_mid</parent>
+        <child>torso_upper</child>
+        <!--<pose relative_to='torso_mid'>[] [] [] [] [] []</pose>-->
+        <pose>0.0 0.0 0.1 0.0 0.0 0.0</pose>
+
+
+      
+        <axis>
+        <!--<xyz expressed_in='__model__'>1 1 1</xyz>-->
+          <xyz>1 0 0</xyz> 
+        
+
+            <!--0 0 1-->
+          <limit>
+            <lower>-0.22</lower> 
+            <upper>0.22</upper> 
+            <effort>3.92</effort>
+            <velocity>1.75</velocity>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="backpack_joint" type="fixed">
+        <parent>torso_upper</parent>
+        <child>backpack</child>
+        <!--<pose relative_to='torso_upper'>[] [] [] [] [] []</pose>-->
+        <pose>0.0 0.12 0.1 0.0 0.0 0.0</pose>
+
+
+      
+        </joint>
+
+      <joint name="neck_connection_joint" type="fixed">
+        <parent>torso_upper</parent>
+        <child>neck_connection</child>
+        <!--<pose relative_to='torso_upper'>[] [] [] [] [] []</pose>-->
+        <pose>0.0 0.0 0.22609 0.0 0.0 0.0</pose>
+
+
+      
+        </joint>
+
+      <joint name="neck_x" type="revolute">
+        <parent>torso_upper</parent>
+        <child>neck</child>
+        <!--<pose relative_to='torso_upper'>[] [] [] [] [] []</pose>-->
+        <pose>0.0 0.0 0.14829 0.0 0.0 0.0</pose>
+
+
+      
+        <axis>
+        <!--<xyz expressed_in='__model__'>1 1 1</xyz>-->
+          <xyz>1 0 0</xyz> 
+        
+
+            <!--1 0 0-->
+          <limit>
+            <lower>0.0</lower> 
+            <upper>0.22</upper> 
+            <effort>3.92</effort>
+            <velocity>1.75</velocity>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="neck_z" type="revolute">
+        <parent>neck</parent>
+        <child>head</child>
+        <!--<pose relative_to='neck'>[] [] [] [] [] []</pose>-->
+        <pose>0.0 0.0 0.12975 0.0 0.0 0.0</pose>
+
+
+      
+        <axis>
+        <!--<xyz expressed_in='__model__'>1 1 1</xyz>-->
+          <xyz>1 0 0</xyz> 
+        
+
+            <!--0 0 1-->
+          <limit>
+            <lower>0.0</lower> 
+            <upper>0.22</upper> 
+            <effort>3.92</effort>
+            <velocity>1.75</velocity>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="realsense_joint" type="fixed">
+        <parent>head</parent>
+        <child>realsense</child>
+        <!--<pose relative_to='head'>[] [] [] [] [] []</pose>-->
+        <pose>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+
+
+      
+        </joint>
+
+      <joint name="shoulder_roll_dexter" type="revolute">
+        <parent>torso_upper</parent>
+        <child>shoulder_bracket_dexter</child>
+        <!--<pose relative_to='torso_upper'>[] [] [] [] [] []</pose>-->
+        <pose>-0.10976 0.0 0.14829 0.0 0.165143 0.0</pose>
+
+
+      
+        <axis>
+        <!--<xyz expressed_in='__model__'>1 1 1</xyz>-->
+          <xyz>1 0 0</xyz> 
+        
+
+            <!--1 0 0-->
+          <limit>
+            <lower>0.0</lower> 
+            <upper>0.22</upper> 
+            <effort>3.92</effort>
+            <velocity>1.75</velocity>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="shoulder_roll_sinister" type="revolute">
+        <parent>torso_upper</parent>
+        <child>shoulder_bracket_sinister</child>
+        <!--<pose relative_to='torso_upper'>[] [] [] [] [] []</pose>-->
+        <pose>0.10976 0.0 0.14829 0.0 -0.165143 0.0</pose>
+
+
+      
+        <axis>
+        <!--<xyz expressed_in='__model__'>1 1 1</xyz>-->
+          <xyz>1 0 0</xyz> 
+        
+
+            <!--1 0 0-->
+          <limit>
+            <lower>0.0</lower> 
+            <upper>0.22</upper> 
+            <effort>3.92</effort>
+            <velocity>1.75</velocity>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="shoulder_pitch_dexter" type="revolute">
+        <parent>shoulder_bracket_dexter</parent>
+        <child>shoulder_link_dexter</child>
+        <!--<pose relative_to='shoulder_bracket_dexter'>[] [] [] [] [] []</pose>-->
+        <pose>-0.076 0.0 0.0 0.0 -0.165143 0.0</pose>
+
+
+      
+        <axis>
+        <!--<xyz expressed_in='__model__'>1 1 1</xyz>-->
+          <xyz>1 0 0</xyz> 
+        
+
+            <!--0 1 0-->
+          <limit>
+            <lower>0.0</lower> 
+            <upper>0.22</upper> 
+            <effort>3.92</effort>
+            <velocity>1.75</velocity>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="shoulder_pitch_sinister" type="revolute">
+        <parent>shoulder_bracket_sinister</parent>
+        <child>shoulder_link_sinister</child>
+        <!--<pose relative_to='shoulder_bracket_sinister'>[] [] [] [] [] []</pose>-->
+        <pose>0.076 0.0 0.0 0.0 0.165143 0.0</pose>
+
+
+      
+        <axis>
+        <!--<xyz expressed_in='__model__'>1 1 1</xyz>-->
+          <xyz>1 0 0</xyz> 
+        
+
+            <!--0 1 0-->
+          <limit>
+            <lower>0.0</lower> 
+            <upper>0.22</upper> 
+            <effort>3.92</effort>
+            <velocity>1.75</velocity>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="arm_upper_rot_dexter" type="revolute">
+        <parent>shoulder_link_dexter</parent>
+        <child>arm_upper_dexter</child>
+        <!--<pose relative_to='shoulder_link_dexter'>[] [] [] [] [] []</pose>-->
+        <pose>-0.102 0.0 0.0 0.0 0.0 0.0</pose>
+
+
+      
+        <axis>
+        <!--<xyz expressed_in='__model__'>1 1 1</xyz>-->
+          <xyz>1 0 0</xyz> 
+        
+
+            <!--1 0 0-->
+          <limit>
+            <lower>0.0</lower> 
+            <upper>0.22</upper> 
+            <effort>3.92</effort>
+            <velocity>1.75</velocity>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="arm_upper_rot_sinister" type="revolute">
+        <parent>shoulder_link_sinister</parent>
+        <child>arm_upper_sinister</child>
+        <!--<pose relative_to='shoulder_link_sinister'>[] [] [] [] [] []</pose>-->
+        <pose>0.102 0.0 0.0 0.0 0.0 0.0</pose>
+
+
+      
+        <axis>
+        <!--<xyz expressed_in='__model__'>1 1 1</xyz>-->
+          <xyz>1 0 0</xyz> 
+        
+
+            <!--1 0 0-->
+          <limit>
+            <lower>0.0</lower> 
+            <upper>0.22</upper> 
+            <effort>3.92</effort>
+            <velocity>1.75</velocity>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="elbow_dexter" type="revolute">
+        <parent>arm_upper_dexter</parent>
+        <child>forearm_dexter</child>
+        <!--<pose relative_to='arm_upper_dexter'>[] [] [] [] [] []</pose>-->
+        <pose>-0.155 0.0 0.0 0.0 0.0 0.0</pose>
+
+
+      
+        <axis>
+        <!--<xyz expressed_in='__model__'>1 1 1</xyz>-->
+          <xyz>1 0 0</xyz> 
+        
+
+            <!--0 0 1-->
+          <limit>
+            <lower>0.0</lower> 
+            <upper>0.22</upper> 
+            <effort>3.92</effort>
+            <velocity>1.75</velocity>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="elbow_sinister" type="revolute">
+        <parent>arm_upper_sinister</parent>
+        <child>forearm_sinister</child>
+        <!--<pose relative_to='arm_upper_sinister'>[] [] [] [] [] []</pose>-->
+        <pose>0.155 0.0 0.0 0.0 0.0 0.0</pose>
+
+
+      
+        <axis>
+        <!--<xyz expressed_in='__model__'>1 1 1</xyz>-->
+          <xyz>1 0 0</xyz> 
+        
+
+            <!--0 0 1-->
+          <limit>
+            <lower>0.0</lower> 
+            <upper>0.22</upper> 
+            <effort>3.92</effort>
+            <velocity>1.75</velocity>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="wrist_rot_dexter" type="revolute">
+        <parent>forearm_dexter</parent>
+        <child>wrist_rot_link_dexter</child>
+        <!--<pose relative_to='forearm_dexter'>[] [] [] [] [] []</pose>-->
+        <pose>-0.1 0.0 0.0 0.0 0.0 0.0</pose>
+
+
+      
+        <axis>
+        <!--<xyz expressed_in='__model__'>1 1 1</xyz>-->
+          <xyz>1 0 0</xyz> 
+        
+
+            <!--1 0 0-->
+          <limit>
+            <lower>0.0</lower> 
+            <upper>0.22</upper> 
+            <effort>3.92</effort>
+            <velocity>1.75</velocity>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="wrist_rot_sinister" type="revolute">
+        <parent>forearm_sinister</parent>
+        <child>wrist_rot_link_sinister</child>
+        <!--<pose relative_to='forearm_sinister'>[] [] [] [] [] []</pose>-->
+        <pose>0.1 0.0 0.0 0.0 0.0 0.0</pose>
+
+
+      
+        <axis>
+        <!--<xyz expressed_in='__model__'>1 1 1</xyz>-->
+          <xyz>1 0 0</xyz> 
+        
+
+            <!--0 0 1-->
+          <limit>
+            <lower>0.0</lower> 
+            <upper>0.22</upper> 
+            <effort>3.92</effort>
+            <velocity>1.75</velocity>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="wrist_pitch_dexter" type="revolute">
+        <parent>wrist_rot_link_dexter</parent>
+        <child>wrist_ball_dexter</child>
+        <!--<pose relative_to='wrist_rot_link_dexter'>[] [] [] [] [] []</pose>-->
+        <pose>-0.055 0.0 0.0 0.0 0.0 0.0</pose>
+
+
+      
+        <axis>
+        <!--<xyz expressed_in='__model__'>1 1 1</xyz>-->
+          <xyz>1 0 0</xyz> 
+        
+
+            <!--0 1 0-->
+          <limit>
+            <lower>0.0</lower> 
+            <upper>0.22</upper> 
+            <effort>3.92</effort>
+            <velocity>1.75</velocity>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="wrist_pitch_sinister" type="revolute">
+        <parent>wrist_rot_link_sinister</parent>
+        <child>wrist_ball_sinister</child>
+        <!--<pose relative_to='wrist_rot_link_sinister'>[] [] [] [] [] []</pose>-->
+        <pose>0.055 0.0 0.0 0.0 0.0 0.0</pose>
+
+
+      
+        <axis>
+        <!--<xyz expressed_in='__model__'>1 1 1</xyz>-->
+          <xyz>1 0 0</xyz> 
+        
+
+            <!--0 0 1-->
+          <limit>
+            <lower>0.0</lower> 
+            <upper>0.22</upper> 
+            <effort>3.92</effort>
+            <velocity>1.75</velocity>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="wrist_yaw_dexter" type="revolute">
+        <parent>wrist_ball_dexter</parent>
+        <child>hand_dexter</child>
+        <!--<pose relative_to='wrist_ball_dexter'>[] [] [] [] [] []</pose>-->
+        <pose>-0.05 0.0 0.0 0.0 0.0 0.0</pose>
+
+
+      
+        <axis>
+        <!--<xyz expressed_in='__model__'>1 1 1</xyz>-->
+          <xyz>1 0 0</xyz> 
+        
+
+            <!--0 1 0-->
+          <limit>
+            <lower>0.0</lower> 
+            <upper>0.22</upper> 
+            <effort>3.92</effort>
+            <velocity>1.75</velocity>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="wrist_yaw_sinister" type="revolute">
+        <parent>wrist_ball_sinister</parent>
+        <child>hand_sinister</child>
+        <!--<pose relative_to='wrist_ball_sinister'>[] [] [] [] [] []</pose>-->
+        <pose>0.05 0.0 0.0 0.0 0.0 0.0</pose>
+
+
+      
+        <axis>
+        <!--<xyz expressed_in='__model__'>1 1 1</xyz>-->
+          <xyz>1 0 0</xyz> 
+        
+
+            <!--1 0 0-->
+          <limit>
+            <lower>0.0</lower> 
+            <upper>0.22</upper> 
+            <effort>3.92</effort>
+            <velocity>1.75</velocity>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="hip_yaw_dexter" type="revolute">
+        <parent>torso_lower</parent>
+        <child>hip_bracket_dexter</child>
+        <!--<pose relative_to='torso_lower'>[] [] [] [] [] []</pose>-->
+        <pose>-0.074255 0.0 -0.05657 0.0 -0.785398 0.0</pose>
+
+
+      
+        <axis>
+        <!--<xyz expressed_in='__model__'>1 1 1</xyz>-->
+          <xyz>1 0 0</xyz> 
+        
+
+            <!--1 0 0-->
+          <limit>
+            <lower>0.0</lower> 
+            <upper>0.22</upper> 
+            <effort>3.92</effort>
+            <velocity>1.75</velocity>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="hip_yaw_sinister" type="revolute">
+        <parent>torso_lower</parent>
+        <child>hip_bracket_sinister</child>
+        <!--<pose relative_to='torso_lower'>[] [] [] [] [] []</pose>-->
+        <pose>0.074255 0.0 -0.05657 0.0 0.785398 0.0</pose>
+
+
+      
+        <axis>
+        <!--<xyz expressed_in='__model__'>1 1 1</xyz>-->
+          <xyz>1 0 0</xyz> 
+        
+
+            <!--1 0 0-->
+          <limit>
+            <lower>0.0</lower> 
+            <upper>0.22</upper> 
+            <effort>3.92</effort>
+            <velocity>1.75</velocity>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="hip_roll_dexter" type="revolute">
+        <parent>hip_bracket_dexter</parent>
+        <child>hip_motor_link_dexter</child>
+        <!--<pose relative_to='hip_bracket_dexter'>[] [] [] [] [] []</pose>-->
+        <pose>-0.09714 0.0 -0.08195 0.0 0.785398 0.0</pose>
+
+
+      
+        <axis>
+        <!--<xyz expressed_in='__model__'>1 1 1</xyz>-->
+          <xyz>1 0 0</xyz> 
+        
+
+            <!--1 0 0-->
+          <limit>
+            <lower>0.0</lower> 
+            <upper>0.22</upper> 
+            <effort>3.92</effort>
+            <velocity>1.75</velocity>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="hip_roll_sinister" type="revolute">
+        <parent>hip_bracket_sinister</parent>
+        <child>hip_motor_link_sinister</child>
+        <!--<pose relative_to='hip_bracket_sinister'>[] [] [] [] [] []</pose>-->
+        <pose>0.09714 0.0 -0.08195 0.0 -0.785398 0.0</pose>
+
+
+      
+        <axis>
+        <!--<xyz expressed_in='__model__'>1 1 1</xyz>-->
+          <xyz>1 0 0</xyz> 
+        
+
+            <!--1 0 0-->
+          <limit>
+            <lower>0.0</lower> 
+            <upper>0.22</upper> 
+            <effort>3.92</effort>
+            <velocity>1.75</velocity>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="hip_pitch_dexter" type="revolute">
+        <parent>hip_motor_link_dexter</parent>
+        <child>thigh_dexter</child>
+        <!--<pose relative_to='hip_motor_link_dexter'>[] [] [] [] [] []</pose>-->
+        <pose>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+
+
+      
+        <axis>
+        <!--<xyz expressed_in='__model__'>1 1 1</xyz>-->
+          <xyz>1 0 0</xyz> 
+        
+
+            <!--1 0 0-->
+          <limit>
+            <lower>0.0</lower> 
+            <upper>0.22</upper> 
+            <effort>3.92</effort>
+            <velocity>1.75</velocity>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="hip_pitch_sinister" type="revolute">
+        <parent>hip_motor_link_sinister</parent>
+        <child>thigh_sinister</child>
+        <!--<pose relative_to='hip_motor_link_sinister'>[] [] [] [] [] []</pose>-->
+        <pose>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+
+
+      
+        <axis>
+        <!--<xyz expressed_in='__model__'>1 1 1</xyz>-->
+          <xyz>1 0 0</xyz> 
+        
+
+            <!--1 0 0-->
+          <limit>
+            <lower>0.0</lower> 
+            <upper>0.22</upper> 
+            <effort>3.92</effort>
+            <velocity>1.75</velocity>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="knee_dexter" type="revolute">
+        <parent>thigh_dexter</parent>
+        <child>calf_dexter</child>
+        <!--<pose relative_to='thigh_dexter'>[] [] [] [] [] []</pose>-->
+        <pose>-0.005 -0.0382 -0.21666 0.0 0.0 0.0</pose>
+
+
+      
+        <axis>
+        <!--<xyz expressed_in='__model__'>1 1 1</xyz>-->
+          <xyz>1 0 0</xyz> 
+        
+
+            <!--1 0 0-->
+          <limit>
+            <lower>0.0</lower> 
+            <upper>0.22</upper> 
+            <effort>3.92</effort>
+            <velocity>1.75</velocity>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="knee_sinister" type="revolute">
+        <parent>thigh_sinister</parent>
+        <child>calf_sinister</child>
+        <!--<pose relative_to='thigh_sinister'>[] [] [] [] [] []</pose>-->
+        <pose>0.005 -0.0382 -0.21666 0.0 0.0 0.0</pose>
+
+
+      
+        <axis>
+        <!--<xyz expressed_in='__model__'>1 1 1</xyz>-->
+          <xyz>1 0 0</xyz> 
+        
+
+            <!--1 0 0-->
+          <limit>
+            <lower>0.0</lower> 
+            <upper>0.22</upper> 
+            <effort>3.92</effort>
+            <velocity>1.75</velocity>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="ankle_pitch_dexter" type="revolute">
+        <parent>calf_dexter</parent>
+        <child>ankle_link_dexter</child>
+        <!--<pose relative_to='calf_dexter'>[] [] [] [] [] []</pose>-->
+        <pose>0.0 0.0547 -0.31021 0.0 0.0 0.0</pose>
+
+
+      
+        <axis>
+        <!--<xyz expressed_in='__model__'>1 1 1</xyz>-->
+          <xyz>1 0 0</xyz> 
+        
+
+            <!--1 0 0-->
+          <limit>
+            <lower>0.0</lower> 
+            <upper>0.22</upper> 
+            <effort>3.92</effort>
+            <velocity>1.75</velocity>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="ankle_pitch_sinister" type="revolute">
+        <parent>calf_sinister</parent>
+        <child>ankle_link_sinister</child>
+        <!--<pose relative_to='calf_sinister'>[] [] [] [] [] []</pose>-->
+        <pose>0.0 0.0547 -0.31021 0.0 0.0 0.0</pose>
+
+
+      
+        <axis>
+        <!--<xyz expressed_in='__model__'>1 1 1</xyz>-->
+          <xyz>1 0 0</xyz> 
+        
+
+            <!--1 0 0-->
+          <limit>
+            <lower>0.0</lower> 
+            <upper>0.22</upper> 
+            <effort>3.92</effort>
+            <velocity>1.75</velocity>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="ankle_roll_dexter" type="revolute">
+        <parent>ankle_link_dexter</parent>
+        <child>foot_dexter</child>
+        <!--<pose relative_to='ankle_link_dexter'>[] [] [] [] [] []</pose>-->
+        <pose>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+
+
+      
+        <axis>
+        <!--<xyz expressed_in='__model__'>1 1 1</xyz>-->
+          <xyz>1 0 0</xyz> 
+        
+
+            <!--1 0 0-->
+          <limit>
+            <lower>0.0</lower> 
+            <upper>0.22</upper> 
+            <effort>3.92</effort>
+            <velocity>1.75</velocity>
+          </limit>
+        </axis>
+      </joint>
+
+      <joint name="ankle_roll_sinister" type="revolute">
+        <parent>ankle_link_sinister</parent>
+        <child>foot_sinister</child>
+        <!--<pose relative_to='ankle_link_sinister'>[] [] [] [] [] []</pose>-->
+        <pose>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+
+
+      
+        <axis>
+        <!--<xyz expressed_in='__model__'>1 1 1</xyz>-->
+          <xyz>1 0 0</xyz> 
+        
+
+            <!--1 0 0-->
+          <limit>
+            <lower>0.0</lower> 
+            <upper>0.22</upper> 
+            <effort>3.92</effort>
+            <velocity>1.75</velocity>
+          </limit>
+        </axis>
+      </joint>
+
+
+</model>
+</sdf>

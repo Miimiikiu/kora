@@ -1,0 +1,10 @@
+-Use realsense in sim
+-Use real RealSense
+-Detectron2 port
+-Control joints from ROS2 messages
+-Control sim with VR
+-Use VR data to walk
+-Run docker test
+
+
+-get the rest of the code imported
